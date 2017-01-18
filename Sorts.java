@@ -49,16 +49,13 @@ public class Sorts {
          for (; index1 < middle + 1; index1++) {
             temp[tempIndex++] = arr[index1];
          }
-      }
-      int random = left;
+      };
       for (int i = 0; i < temp.length; i++) {
-         arr[random++] = temp[i];
+         arr[left++] = temp[i];
       }
    }
 
-   public static void quickSort(int[] arr, int n) {
-       
-   }
+   public static void quickSort(int[] arr, int n) {}
    
    private static void quickSort(int[] arr, int first, int last) {
       if (first < last) {
@@ -70,11 +67,16 @@ public class Sorts {
    }
    
    private static void setPivotToEnd(int[] arr, int left, int right) {
-   
+      int center = (left + right) / 2;
+      int[] order = findMinOfThree(arr[left], arr[center], arr[right]);
+
+      arr[left] = order[0];
+      arr[center] = order[1];
+      arr[right] = order[2];
    }
    
    private static int splitList(int[] arr, int left, int right) {
-  
+      return 0;
    }
    
    private static int findMin(int[] arr, int start) {
@@ -86,5 +88,50 @@ public class Sorts {
          }
       }
       return minIndex;
+   }
+
+   private static int[] findMinOfThree(int a, int b, int c) {
+      int[] result = new int[3];
+
+      if (a < b) {
+         if (b < c) {
+            result[0] = a;
+            result[1] = b;
+            result[2] = c;
+         }
+         else {
+            if (a < c) {
+               result[0] = a;
+               result[1] = c;
+               result[2] = b;
+            }
+            else {
+               result[0] = c;
+               result[1] = a;
+               result[2] = b;
+            }
+         }
+      }
+      else {
+         if (a < c) {
+            result[0] = b;
+            result[1] = a;
+            result[2] = c;
+         }
+         else {
+            if (b < c) {
+               result[0] = b;
+               result[1] = c;
+               result[2] = a;
+            }
+            else {
+               result[0] = c;
+               result[1] = b;
+               result[2] = a;
+            }
+         }
+      }
+
+      return result;
    }
 }
