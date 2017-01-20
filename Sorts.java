@@ -49,7 +49,7 @@ public class Sorts {
          for (; index1 < middle + 1; index1++) {
             temp[tempIndex++] = arr[index1];
          }
-      };
+      }
       for (int i = 0; i < temp.length; i++) {
          arr[left++] = temp[i];
       }
@@ -79,32 +79,52 @@ public class Sorts {
    }
    
    private static int splitList(int[] arr, int left, int right) {
-      int indexL = left, indexR = right - 1, temp, pivot = arr[right];
+// <<<<<<< HEAD
+//       int indexL = left, indexR = right - 1, temp, pivot = arr[right];
 
-      while (indexL <= indexR) {
-         while (arr[indexL++] < arr[right]) {
-            ;
-         }
-         while (indexR >= indexL && arr[indexR] > arr[right]) {
-            indexR--;
-         }
-         if (indexL <= indexR) {
-            temp = arr[indexL];
-            arr[indexL] = arr[indexR];
-            arr[indexR] = temp;
-         }
-      }
-      temp = arr[indexL];
-      arr[indexL] = arr[right];
-      arr[right] = temp;
+//       while (indexL <= indexR) {
+//          while (arr[indexL++] < arr[right]) {
+//             ;
+//          }
+//          while (indexR >= indexL && arr[indexR] > arr[right]) {
+//             indexR--;
+//          }
+//          if (indexL <= indexR) {
+//             temp = arr[indexL];
+//             arr[indexL] = arr[indexR];
+//             arr[indexR] = temp;
+//          }
+//       }
+//       temp = arr[indexL];
+//       arr[indexL] = arr[right];
+//       arr[right] = temp;
 
-      return indexL;
+//       return indexL;
+// =======
+	  int indexL = left;
+	  int indexR = right - 1;
+	  int pivot = right;
+	  
+	  while (indexL <= indexR) {
+		  while (arr[indexL] < arr[pivot])
+			  indexL++;
+		  while (arr[indexR] > arr[pivot] && indexR >= indexL)
+			  indexR++;
+		  if (indexL <= indexR) {
+			  swap(arr, indexL, indexR);
+			  indexL++;
+			  indexR--;
+		  }
+	  }
+	  swap(arr, indexL, pivot);
+	  
+	  return indexL;
    }
    
    private static int findMin(int[] arr, int start) {
       int minIndex = start;
 
-      for (int i = start; i < arr.length; i++) {
+      for (int i = start + 1; i < arr.length; i++) {
          if (arr[i] < arr[minIndex]) {
             minIndex = i;
          }
@@ -155,5 +175,11 @@ public class Sorts {
       }
 
       return result;
+   }
+   
+   private static void swap(int[] arr, int first, int second) {
+	   int temp = arr[first];
+	   arr[first] = arr[second];
+	   arr[second] = temp;
    }
 }
