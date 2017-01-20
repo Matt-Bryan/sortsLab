@@ -77,7 +77,7 @@ public class Sorts1 {
       int[] splitListResult;
 
       if (first < last) {
-         setPivotToEnd(arr, first, last);
+         comps += setPivotToEnd(arr, first, last);
          splitListResult = splitList(arr, first, last);
          comps += splitListResult[1];
          comps += quickSort(arr, first, splitListResult[0] - 1);
@@ -86,13 +86,15 @@ public class Sorts1 {
       return comps;
    }
    
-   private static void setPivotToEnd(int[] arr, int left, int right) {
+   private static int setPivotToEnd(int[] arr, int left, int right) {
       int center = (left + right) / 2;
       int[] order = findMinOfThree(arr[left], arr[center], arr[right]);
 
       arr[left] = order[0];
       arr[center] = order[1];
       arr[right] = order[2];
+
+      return order[3];
    }
    
    private static int[] splitList(int[] arr, int left, int right) {
@@ -177,7 +179,7 @@ public class Sorts1 {
          }
          result[3]++;
       }
-      result[3]++;
+      //result[3]++;
 
       return result;
    }
