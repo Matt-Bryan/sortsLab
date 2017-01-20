@@ -55,7 +55,9 @@ public class Sorts {
       }
    }
 
-   public static void quickSort(int[] arr, int n) {}
+   public static void quickSort(int[] arr, int n) {
+	   quickSort(arr, 0, n-1);
+   }
    
    private static void quickSort(int[] arr, int first, int last) {
       if (first < last) {
@@ -76,13 +78,30 @@ public class Sorts {
    }
    
    private static int splitList(int[] arr, int left, int right) {
-      return 0;
+	  int indexL = left;
+	  int indexR = right - 1;
+	  int pivot = right;
+	  
+	  while (indexL <= indexR) {
+		  while (arr[indexL] < arr[pivot])
+			  indexL++;
+		  while (arr[indexR] > arr[pivot] && indexR >= indexL)
+			  indexR++;
+		  if (indexL <= indexR) {
+			  swap(arr, indexL, indexR);
+			  indexL++;
+			  indexR--;
+		  }
+	  }
+	  swap(arr, indexL, pivot);
+	  
+	  return indexL;
    }
    
    private static int findMin(int[] arr, int start) {
       int minIndex = start;
 
-      for (int i = start; i < arr.length; i++) {
+      for (int i = start + 1; i < arr.length; i++) {
          if (arr[i] < arr[minIndex]) {
             minIndex = i;
          }
@@ -133,5 +152,11 @@ public class Sorts {
       }
 
       return result;
+   }
+   
+   private static void swap(int[] arr, int first, int second) {
+	   int temp = arr[first];
+	   arr[first] = arr[second];
+	   arr[second] = temp;
    }
 }
