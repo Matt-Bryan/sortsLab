@@ -79,28 +79,6 @@ public class Sorts {
    }
    
    private static int splitList(int[] arr, int left, int right) {
-// <<<<<<< HEAD
-//       int indexL = left, indexR = right - 1, temp, pivot = arr[right];
-
-//       while (indexL <= indexR) {
-//          while (arr[indexL++] < arr[right]) {
-//             ;
-//          }
-//          while (indexR >= indexL && arr[indexR] > arr[right]) {
-//             indexR--;
-//          }
-//          if (indexL <= indexR) {
-//             temp = arr[indexL];
-//             arr[indexL] = arr[indexR];
-//             arr[indexR] = temp;
-//          }
-//       }
-//       temp = arr[indexL];
-//       arr[indexL] = arr[right];
-//       arr[right] = temp;
-
-//       return indexL;
-// =======
 	  int indexL = left;
 	  int indexR = right - 1;
 	  int pivot = right;
