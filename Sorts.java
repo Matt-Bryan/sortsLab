@@ -87,7 +87,7 @@ public class Sorts {
 		  while (arr[indexL] < arr[pivot])
 			  indexL++;
 		  while (arr[indexR] > arr[pivot] && indexR >= indexL)
-			  indexR++;
+			  indexR--;
 		  if (indexL <= indexR) {
 			  swap(arr, indexL, indexR);
 			  indexL++;
