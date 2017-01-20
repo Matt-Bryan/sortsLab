@@ -12,5 +12,12 @@ public class sortTests {
       for (int i = 0; i < mergeArray.length; i++) {
          System.out.println(mergeArray[i]);
       }
+
+      int[] quickArray = {2, 6, 7, 0, -1, 4, 8, 8};
+      Sorts.quickSort(quickArray, quickArray.length);
+
+      for (int i = 0; i < quickArray.length; i++) {
+         System.out.println(quickArray[i]);
+      }
    }
 }
