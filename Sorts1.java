@@ -17,17 +17,6 @@ public class Sorts1 {
       return comps;
    }
    
-   // private static int findMin(int[] arr, int start) {
-   //    int minIndex = start;
-
-   //    for (int i = start + 1; i < arr.length; i++) {
-   //       if (arr[i] < arr[minIndex]) {
-   //          minIndex = i;
-   //       }
-   //    }
-   //    return minIndex;
-   // }
-
    public static int mergeSort(int[] arr, int n) {
       return mergeSort(arr, 0, n - 1);
    }
@@ -88,7 +77,7 @@ public class Sorts1 {
       int[] splitListResult;
 
       if (first < last) {
-         comps += setPivotToEnd(arr, first, last);
+         setPivotToEnd(arr, first, last);
          splitListResult = splitList(arr, first, last);
          comps += splitListResult[1];
          comps += quickSort(arr, first, splitListResult[0] - 1);
@@ -97,23 +86,21 @@ public class Sorts1 {
       return comps;
    }
    
-   private static int setPivotToEnd(int[] arr, int left, int right) {
+   private static void setPivotToEnd(int[] arr, int left, int right) {
       int center = (left + right) / 2;
       int[] order = findMinOfThree(arr[left], arr[center], arr[right]);
 
       arr[left] = order[0];
       arr[center] = order[1];
       arr[right] = order[2];
-
-      return order[3];
    }
    
    private static int[] splitList(int[] arr, int left, int right) {
 	  int indexL = left;
 	  int indexR = right - 1;
 	  int pivot = right;
-     int comps = 0;
-     int[] result = new int[2];
+          int comps = 0;
+          int[] result = new int[2];
 	  
 	  while (indexL <= indexR) {
 		  while (arr[indexL] < arr[pivot]) {
@@ -121,11 +108,15 @@ public class Sorts1 {
            comps++;
          }
          comps++;
-		  while (arr[indexR] > arr[pivot] && indexR >= indexL) {
-			  indexR--;
-           comps++;
+		  while (indexR >= indexL) {
+                          if (arr[indexR] > arr[pivot]) {
+			     indexR--;
+                          }
+                          else {
+                             break;
+                          }
+                          comps++;
          }
-         comps++;
 		  if (indexL <= indexR) {
 			  swap(arr, indexL, indexR);
 			  indexL++;

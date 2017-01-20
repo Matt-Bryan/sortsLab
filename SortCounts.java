@@ -6,6 +6,7 @@ public class SortCounts {
 		long selectCount = 0, mergeCount = 0, quickCount = 0;
 		int[] selectSort, mergeSort, quickSort;
 		
+                System.out.println("Average number of element-comparisons in three sorting algorithms:\n");
 
 		for (int n = 100; n <= 12800; n*=2) {
 			selectSort = new int[n];
@@ -23,9 +24,9 @@ public class SortCounts {
 				mergeCount += Sorts1.mergeSort(mergeSort, n);
 				quickCount += Sorts1.quickSort(quickSort, n);				
 			}
-			System.out.println("N = " + n + ": C_ss = " + selectCount / 100 + ", C_ms = " + mergeCount / 100 + ", C_qs = " + quickCount / 100);
-			System.out.println();
+			System.out.println("N = " + n + ": C_ss = " + (selectCount / 100) + ", C_ms = " + (mergeCount / 100) + ", C_qs = " + (quickCount / 100));
+                        selectCount = mergeCount = quickCount = 0;
 		}
-		
+		System.out.println("\nEnd of output\n");
 	}
 }

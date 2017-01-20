@@ -5,6 +5,7 @@ public class SortTimes {
 		Random rand = new Random();
 		int[] selectSort, mergeSort, quickSort;
 		
+                System.out.println("Running Times of three sorting algorithms:\n");
 
 		for (int n = 5000; n <= 160000; n*=2) {
 			selectSort = new int[n];
@@ -30,8 +31,8 @@ public class SortTimes {
 				
 				System.out.println("N = " + n + ": T_ss = " + selectAfter + ", T_ms = " + mergeAfter + ", T_qs = " + quickAfter);
 			}
-			System.out.println();
+                        System.out.println();
 		}
-		
+                System.out.println("End of Output\n");
 	}
 }
