@@ -1,8 +1,13 @@
+/* Authors: Matt Bryan and Sam Rastovich
+ * IDs: mpbryan and srastovi
+ * Date: 1-16-17
+ * Assignment: Project 1  */
+
 public class Sorts {
-   public static void selectionSort(int[] arr, int n) {
+   public static void selectionSort(int[] arr, int N) {
       int temp, minIndex;
 
-      for (int i = 0; i < n; i++) {
+      for (int i = 0; i < N; i++) {
          minIndex = findMin(arr, i);
          temp = arr[i];
          arr[i] = arr[minIndex];
@@ -10,8 +15,8 @@ public class Sorts {
       }
    }
 
-   public static void mergeSort(int[] arr, int n) {
-      mergeSort(arr, 0, n - 1);
+   public static void mergeSort(int[] arr, int N) {
+      mergeSort(arr, 0, N - 1);
    }
 
    private static void mergeSort(int[] arr, int first, int last) {
@@ -55,8 +60,8 @@ public class Sorts {
       }
    }
 
-   public static void quickSort(int[] arr, int n) {
-      quickSort(arr, 0, n - 1);
+   public static void quickSort(int[] arr, int N) {
+      quickSort(arr, 0, N - 1);
    }
    
    private static void quickSort(int[] arr, int first, int last) {

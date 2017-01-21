@@ -1,3 +1,8 @@
+/* Authors: Matt Bryan and Sam Rastovich
+ * IDs: mpbryan and srastovi
+ * Date: 1-16-17
+ * Assignment: Project 1  */
+
 import java.util.Random;
 
 public class SortTimes {
